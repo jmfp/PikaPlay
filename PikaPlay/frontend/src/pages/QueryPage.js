@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import Result from '../components/Result';
 import { useNavigate } from 'react-router-dom';
+import Button from '../components/Button'
 
 export default function QueryPage() {
     const [pokeList, setPokeList] = useState([]);
@@ -16,20 +17,18 @@ export default function QueryPage() {
         getPokeList()
     }, [])
     const getPokeList = async () =>{
-        await axios.get('https://pokeapi.co/api/v2/pokemon?limit=386').then(res =>{  
+        await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`).then(res =>{  
             console.log(res.data.results)
             setPokeList(res.data.results)
-        })
-        await axios.get('https://pokeapi.co/api/v2/pokemon/pikachu').then(res =>{  
-            console.log(res.data)
         })
     }
 
     let limit = 60;
-    let offset = 60;
+    let offset = 0;
 
     const nextPage = () =>{
         offset += limit;
+        getPokeList()
     }
 
     const backPage = () =>{
@@ -46,14 +45,15 @@ export default function QueryPage() {
                     return(
                         <Result 
                         pokeName={mon.name} 
-                        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+1}.png`} 
-                        pokeNum={i+1}
+                        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + offset)}.png`} 
+                        pokeNum={(i+1) + offset}
                         onClick={() => displayInfo(`${mon.name}`)}
                         />
                     )
                 })
             :null}
         </div>
+        {/*<Button className='round-button-static' text='Next Page' onClick={nextPage}/>*/}
     </div>
   )
 }
