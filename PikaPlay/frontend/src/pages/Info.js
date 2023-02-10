@@ -34,15 +34,6 @@ export default function Info() {
             console.log(res.data)
             setSpeciesInfo(res.data)
         })
-        await axios.get(`https://pokeapi.co/api/v2/pokemon-color/`).then(res =>{
-            console.log(res.data)
-            //setSpeciesInfo(res.data)
-        })
-        await axios.get(`https://pokeapi.co/api/v2/pokemon-color/3/`).then(res =>{
-            console.log(res.data)
-            //setSpeciesInfo(res.data)
-        })
-        
     }
     useEffect(() =>{
         getinfo()
