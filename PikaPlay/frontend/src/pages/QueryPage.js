@@ -16,7 +16,7 @@ export default function QueryPage() {
         getPokeList()
     }, [])
     const getPokeList = async () =>{
-        await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151').then(res =>{  
+        await axios.get('https://pokeapi.co/api/v2/pokemon?limit=386').then(res =>{  
             console.log(res.data.results)
             setPokeList(res.data.results)
         })

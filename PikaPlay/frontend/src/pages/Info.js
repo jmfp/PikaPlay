@@ -6,6 +6,11 @@ import Image from '../components/Image';
 export default function Info() {
     const [pokeInfo, setPokeInfo] = useState()
     const [speciesInfo, setSpeciesInfo] = useState()
+    const [encounterInfo, setEncounterInfo] = useState()
+    const [habitatInfo, setHabitatInfo] = useState()
+    const [locationInfo, setLocationInfo] = useState()
+    const [locationInfoExtended, setLocationInfoExtended] = useState()
+    const [regionInfo, setRegionInfo] = useState()
     const {pokeName} = useParams();
 
     const colors = 
@@ -35,23 +40,112 @@ export default function Info() {
             setSpeciesInfo(res.data)
         })
     }
+
+    const getEncounterInfo = async () =>{
+        await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeInfo.id}/encounters`).then(res =>{
+            console.log(res.data)
+            setEncounterInfo(res.data)
+        })
+        //await axios.get(`https://pokeapi.co/api/v2/pokemon-habitat/${speciesInfo.habitat.name}/`).then(res =>{
+        //    console.log(res.data)
+        //    setHabitatInfo(res.data)
+        //})
+        
+    }
+
+    const getLocationInfo = async () =>{
+        await axios.get(`${encounterInfo[0].location_area.url}`).then(res =>{
+            console.log(res.data)
+            setLocationInfo(res.data)
+        })
+    }
+
+    const getLocationInfoExpanded = async () =>{
+        await axios.get(`${locationInfo.location.url}`).then(res =>{
+            console.log(res.data)
+            setLocationInfoExtended(res.data)
+        })
+    }
+
+    const getRegionInfo = async () =>{
+        await axios.get(`${locationInfo.region.url}`).then(res =>{
+            console.log(res.data)
+            setRegionInfo(res.data)
+        })
+    }
+
     useEffect(() =>{
         getinfo()
     }, [])
 
     useEffect(() =>{
         getSpeciesInfo()
+        getEncounterInfo()
+        getLocationInfo()
+        getLocationInfoExpanded()
+        getRegionInfo()
     }, [pokeInfo])
+
+    useEffect(() =>{
+        getLocationInfo()
+        getLocationInfoExpanded()
+        getRegionInfo()
+    }, [encounterInfo])
+
+    useEffect(() =>{
+        try{
+
+            getRegionInfo()
+        }catch(error){
+            console.log(error)
+        }
+    }, [locationInfo])
   return (
     <div className='page-container'>
         {pokeInfo && speciesInfo ? 
+        <div className='poke-info-parent'>
+            <div className='poke-content-parent'>
+
+                <div className='poke-info-header'>
+                    <p>{pokeInfo.name}</p>
+                    <p>{`#${pokeInfo.id}`}</p>
+                </div>
+                <div className='poke-sprites' style={{filter: 'blur(0)'}}>
+                    <img className='poke-image-header' src={pokeInfo.sprites.front_default}/>
+                    <img className='poke-image-header' src={pokeInfo.sprites.back_default}/>
+                    <img className='poke-image-header' src={pokeInfo.sprites.front_shiny}/>
+                    <img className='poke-image-header' src={pokeInfo.sprites.back_shiny}/>
+                </div>
+                <div className='poke-entry'>
+                    <p>{speciesInfo.flavor_text_entries[0].flavor_text}</p>
+                    {pokeInfo ? 
+                    <select>
+
+                        {pokeInfo.game_indices.map(versions =>{
+                            return(
+
+                                <option>{versions.version.name}</option>
+                            )
+                        })}
+                    </select>
+                    : null}
+                    {locationInfoExtended ? 
+                    <div>
+                        <p>{locationInfoExtended.region.name}</p>
+                        <p>{locationInfoExtended.names[2].name}</p>
+                    </div>
+                    : null}
+                </div>
+            </div>
             <Image 
-                className="hero-image" 
+                className="poke-info-container" 
                 backgroundImage="f" 
                 image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeInfo.id}.png`}
                 filter='blur(16px)'
                 backgroundColor={colors[speciesInfo.color.name]}
-            />
+            >
+            </Image>
+        </div>
         : 
             null
         }
