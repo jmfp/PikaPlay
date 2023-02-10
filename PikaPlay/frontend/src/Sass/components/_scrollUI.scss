@@ -1,12 +1,12 @@
 .ui-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     background-color: $color-dark;
-    overflow-y: scroll;
+    overflow-y: auto;
     &-horizontal{
         flex-direction: row;
         width: 50%;

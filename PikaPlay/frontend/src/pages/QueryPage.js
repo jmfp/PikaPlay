@@ -1,8 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import Result from '../components/Result';
+import { useNavigate } from 'react-router-dom';
 
 export default function QueryPage() {
     const [pokeList, setPokeList] = useState([]);
+    const navigate = useNavigate();
+
+
+    const displayInfo = (pokeName) =>{
+        navigate(`/info/${pokeName}`)
+    }
 
     useEffect(() => {
         getPokeList()
@@ -34,8 +42,15 @@ export default function QueryPage() {
     <div className='page-container'>
         <div className='ui-container'>
             {pokeList.length > 0 ?
-                pokeList.map(mon =>{
-                    return(<p style={{color: 'white'}}>{mon.name}</p>)
+                pokeList.map((mon, i) =>{
+                    return(
+                        <Result 
+                        pokeName={mon.name} 
+                        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+1}.png`} 
+                        pokeNum={i+1}
+                        onClick={() => displayInfo(`${mon.name}`)}
+                        />
+                    )
                 })
             :null}
         </div>
