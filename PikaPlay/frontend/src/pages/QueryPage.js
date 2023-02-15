@@ -23,7 +23,7 @@ export default function QueryPage() {
         })
     }
 
-    let limit = 60;
+    let limit = 600;
     let offset = 0;
 
     const nextPage = () =>{
@@ -40,18 +40,21 @@ export default function QueryPage() {
   return (
     <div className='page-container'>
         <div className='ui-container'>
-            {pokeList.length > 0 ?
-                pokeList.map((mon, i) =>{
-                    return(
-                        <Result 
-                        pokeName={mon.name} 
-                        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + offset)}.png`} 
-                        pokeNum={(i+1) + offset}
-                        onClick={() => displayInfo(`${mon.name}`)}
-                        />
-                    )
-                })
-            :null}
+            <div className='grid'>
+
+                {pokeList.length > 0 ?
+                    pokeList.map((mon, i) =>{
+                        return(
+                            <Result 
+                            pokeName={mon.name} 
+                            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + offset)}.png`} 
+                            pokeNum={(i+1) + offset}
+                            onClick={() => displayInfo(`${mon.name}`)}
+                            />
+                        )
+                    })
+                :null}
+            </div>
         </div>
         {/*<Button className='round-button-static' text='Next Page' onClick={nextPage}/>*/}
     </div>

@@ -1,47 +1,9 @@
-@import "../breakpoints/breakpoints.scss";
-
 .grid{
     display: grid;
     align-content: center;
     justify-content: center;
-    grid-template-columns: 2fr 2fr 2fr;
-    grid-template-rows: 2fr 2fr 2fr;
-    gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    //grid-template-rows: 2fr 2fr 2fr;
+    gap: 2px;
     grid-auto-flow: row;
-    margin-left: 5%;
-    column-gap: 0;
-    row-gap: 0;
-    @include media('<=phone'){
-        display: grid;
-        align-content: center;
-        justify-content: center;
-        grid-template-columns: 2fr 2fr;
-        grid-template-rows: 2fr 2fr;
-        //gap: 4px;
-        grid-auto-flow: row;
-        margin-right: 5%;
-        margin-left: 0%;
-    }
-    @include media('>phone','<=425px'){
-        display: grid;
-        align-content: center;
-        justify-content: center;
-        grid-template-columns: 2fr 2fr;
-        grid-template-rows: 2fr 2fr;
-        //gap: 4px;
-        grid-auto-flow: row;
-        margin-right: 5%;
-        margin-left: 0%;
-    }
-    @include media('>phone','<=1120px'){
-        display: grid;
-        align-content: center;
-        justify-content: center;
-        grid-template-columns: 2fr 2fr;
-        grid-template-rows: 2fr 2fr;
-        //gap: 4px;
-        grid-auto-flow: row;
-        margin-right: 5%;
-        margin-left: 0%;
-    }
 }

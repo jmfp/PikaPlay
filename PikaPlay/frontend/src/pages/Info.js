@@ -6,13 +6,15 @@ import Image from '../components/Image';
 export default function Info() {
     const [pokeInfo, setPokeInfo] = useState()
     const [speciesInfo, setSpeciesInfo] = useState()
-    const [encounterInfo, setEncounterInfo] = useState()
+    const [encounterInfo, setEncounterInfo] = useState([{version_details: [{version: {name: ''}}]}])
     const [habitatInfo, setHabitatInfo] = useState()
     const [locationInfo, setLocationInfo] = useState()
     const [locationInfoExtended, setLocationInfoExtended] = useState()
     const [regionInfo, setRegionInfo] = useState()
     const {pokeName} = useParams();
 
+    //remapping the colors because the provided colors
+    //from the api are ugly 🤮
     const colors = 
     {
         pink: 'rgba(238, 128, 167, 255)',
@@ -53,19 +55,19 @@ export default function Info() {
         
     }
 
-    const getLocationInfo = async () =>{
-        await axios.get(`${encounterInfo[0].location_area.url}`).then(res =>{
-            console.log(res.data)
-            setLocationInfo(res.data)
-        })
-    }
-
-    const getLocationInfoExpanded = async () =>{
-        await axios.get(`${locationInfo.location.url}`).then(res =>{
-            console.log(res.data)
-            setLocationInfoExtended(res.data)
-        })
-    }
+    //const getLocationInfo = async () =>{
+    //    await axios.get(`${encounterInfo[0].location_area.url}`).then(res =>{
+    //        console.log("location info " + res.data)
+    //        setLocationInfo(res.data)
+    //    })
+    //}
+//
+    //const getLocationInfoExpanded = async () =>{
+    //    await axios.get(`${locationInfo.location.url}`).then(res =>{
+    //        console.log("location info expanded " + res.data)
+    //        setLocationInfoExtended(res.data)
+    //    })
+    //}
 
     const getRegionInfo = async () =>{
         await axios.get(`${locationInfo.region.url}`).then(res =>{
@@ -81,16 +83,8 @@ export default function Info() {
     useEffect(() =>{
         getSpeciesInfo()
         getEncounterInfo()
-        getLocationInfo()
-        getLocationInfoExpanded()
         getRegionInfo()
     }, [pokeInfo])
-
-    useEffect(() =>{
-        getLocationInfo()
-        getLocationInfoExpanded()
-        getRegionInfo()
-    }, [encounterInfo])
 
     useEffect(() =>{
         try{
@@ -119,15 +113,32 @@ export default function Info() {
                 <div className='poke-entry'>
                     <p>{speciesInfo.flavor_text_entries[0].flavor_text}</p>
                     {pokeInfo ? 
-                    <select>
+                    <div>
+                        <p>Locations</p>
+                        <select className='input-field'>
+                            {pokeInfo.game_indices.map(versions =>{
+                                return(
 
-                        {pokeInfo.game_indices.map(versions =>{
-                            return(
-
-                                <option>{versions.version.name}</option>
-                            )
-                        })}
-                    </select>
+                                    <option>{versions.version.name}</option>
+                                )
+                            })}
+                        </select>
+                        
+                    </div>
+                    : null}
+                    {/* encounter info */}
+                    {encounterInfo ? 
+                    <div>
+                        <p>Locations</p>
+                        <select className='input-field'>
+                            {encounterInfo.map(versions =>{
+                                return(
+                                    <option>{versions.version_details.version.name}</option>
+                                )
+                            })}
+                        </select>
+                        
+                    </div>
                     : null}
                     {locationInfoExtended ? 
                     <div>
