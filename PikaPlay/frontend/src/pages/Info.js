@@ -61,7 +61,7 @@ export default function Info() {
     //        setLocationInfo(res.data)
     //    })
     //}
-//
+    
     //const getLocationInfoExpanded = async () =>{
     //    await axios.get(`${locationInfo.location.url}`).then(res =>{
     //        console.log("location info expanded " + res.data)
@@ -88,7 +88,6 @@ export default function Info() {
 
     useEffect(() =>{
         try{
-
             getRegionInfo()
         }catch(error){
             console.log(error)
@@ -101,7 +100,7 @@ export default function Info() {
             <div className='poke-content-parent'>
 
                 <div className='poke-info-header'>
-                    <p>{pokeInfo.name}</p>
+                    <p>{pokeInfo.name[0].toUpperCase() + pokeInfo.name.substring(1)}</p>
                     <p>{`#${pokeInfo.id}`}</p>
                 </div>
                 <div className='poke-sprites' style={{filter: 'blur(0)'}}>
@@ -118,12 +117,10 @@ export default function Info() {
                         <select className='input-field'>
                             {pokeInfo.game_indices.map(versions =>{
                                 return(
-
                                     <option>{versions.version.name}</option>
                                 )
                             })}
-                        </select>
-                        
+                        </select>                       
                     </div>
                     : null}
                     {/* encounter info */}
@@ -133,7 +130,7 @@ export default function Info() {
                         <select className='input-field'>
                             {encounterInfo.map(versions =>{
                                 return(
-                                    <option>{versions.version_details.version.name}</option>
+                                    <option>{versions.version_details[0].version.name} {versions.location_area.name.replace(/-/g,' ')}</option>
                                 )
                             })}
                         </select>
@@ -154,8 +151,7 @@ export default function Info() {
                 image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeInfo.id}.png`}
                 filter='blur(16px)'
                 backgroundColor={colors[speciesInfo.color.name]}
-            >
-            </Image>
+            />
         </div>
         : 
             null
