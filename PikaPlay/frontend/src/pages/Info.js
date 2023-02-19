@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Image from '../components/Image';
+import EncounterInfo from '../components/EncounterInfo';
 
 export default function Info() {
     const [pokeInfo, setPokeInfo] = useState()
@@ -98,7 +99,6 @@ export default function Info() {
         {pokeInfo && speciesInfo ? 
         <div className='poke-info-parent'>
             <div className='poke-content-parent'>
-
                 <div className='poke-info-header'>
                     <p>{pokeInfo.name[0].toUpperCase() + pokeInfo.name.substring(1)}</p>
                     <p>{`#${pokeInfo.id}`}</p>
@@ -111,38 +111,26 @@ export default function Info() {
                 </div>
                 <div className='poke-entry'>
                     <p>{speciesInfo.flavor_text_entries[0].flavor_text}</p>
-                    {pokeInfo ? 
-                    <div>
-                        <p>Locations</p>
-                        <select className='input-field'>
-                            {pokeInfo.game_indices.map(versions =>{
-                                return(
-                                    <option>{versions.version.name}</option>
-                                )
-                            })}
-                        </select>                       
-                    </div>
-                    : null}
                     {/* encounter info */}
                     {encounterInfo ? 
-                    <div>
+                    <div className='ui-container'>
                         <p>Locations</p>
-                        <select className='input-field'>
+                        <div>
                             {encounterInfo.map(versions =>{
                                 return(
-                                    <option>{versions.version_details[0].version.name} {versions.location_area.name.replace(/-/g,' ')}</option>
+                                    <EncounterInfo location_area= {versions.location_area.name.replace(/-/g,' ')} versions={versions.version_details}/>
+                                    //{<option>{versions.version_details[0].version.name}</option>}
                                 )
                             })}
-                        </select>
-                        
+                        </div>
                     </div>
                     : null}
-                    {locationInfoExtended ? 
+                    {/*locationInfoExtended ? 
                     <div>
                         <p>{locationInfoExtended.region.name}</p>
                         <p>{locationInfoExtended.names[2].name}</p>
                     </div>
-                    : null}
+                        : null*/}
                 </div>
             </div>
             <Image 

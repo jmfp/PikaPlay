@@ -1,9 +1,10 @@
 .grid{
     display: grid;
-    align-content: center;
-    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
     grid-template-columns: repeat(3, 1fr);
-    //grid-template-rows: 2fr 2fr 2fr;
-    gap: 2px;
+    grid-template-rows: auto;
+    //gap: 2px;
     grid-auto-flow: row;
 }

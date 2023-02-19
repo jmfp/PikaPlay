@@ -8,7 +8,6 @@ export default function QueryPage() {
     const [pokeList, setPokeList] = useState([]);
     const navigate = useNavigate();
 
-
     const displayInfo = (pokeName) =>{
         navigate(`/info/${pokeName}`)
     }

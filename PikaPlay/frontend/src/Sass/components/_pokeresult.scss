@@ -25,6 +25,8 @@
 .poke-info-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -37,6 +39,9 @@
     display: flex;
     position: relative;
     flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     width: 90%;
     height: 100%;
     border-style: solid;
@@ -44,7 +49,8 @@
     border-color: $color-white;
     border-radius: 26px;
     margin: 20px;
-    overflow: hidden;
+    overflow-y: scroll;
+    //overflow: hidden;
 }
 .poke-sprites{
     display: flex;
@@ -96,4 +102,19 @@
     //background-color: $color-white;
     //color: rgba(0, 0, 0, 0.5);
     //z-index: 1;
+}
+
+.poke-encounter{
+    border-radius: 2px;
+    border-style: solid;
+    border-color: $color-primary;
+
+}
+
+.poke-version-list{
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
