@@ -24,6 +24,7 @@ import x from '../images/poke-x.png'
 import y from '../images/poke-y.webp'
 import omega from '../images/poke-omega-ruby.png'
 import alpha from '../images/poke-alpha-sapphire.png'
+import axios from 'axios'
 
 export default function EncounterInfo(props) {
 
@@ -83,13 +84,20 @@ export default function EncounterInfo(props) {
         let newString = lowerString[0].toUpperCase() + lowerString.substring(1)
         return newString
     }
+
+    const getGame = async (gameName) =>{
+        await axios.get(`https://pokeapi.co/api/v2/version/${gameName}/`).then(res =>{
+            console.log(res.data)
+        })
+    }
+
   return (
     <div className='poke-encounter'>
         <p>{props.location_area}</p>
         <div className="grid">
             {props.versions ? props.versions.map(versions =>{
                 return(
-                    <img className='card-image' src={versionPictures[`${versions.version.name}`]}/>
+                    <img className='card-image' src={versionPictures[`${versions.version.name}`]} onClick={()=>(getGame(versions.version.name))}/>
                     //<img className='card-image' src={`../images/poke-${versions.version.name}.jpeg`}/>
                     //<p>{versions.version.name}</p>
                 )

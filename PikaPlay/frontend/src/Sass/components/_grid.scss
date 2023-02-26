@@ -8,3 +8,9 @@
     //gap: 2px;
     grid-auto-flow: row;
 }
+
+.stretch-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

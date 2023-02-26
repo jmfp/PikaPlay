@@ -7,7 +7,7 @@ import EncounterInfo from '../components/EncounterInfo';
 export default function Info() {
     const [pokeInfo, setPokeInfo] = useState()
     const [speciesInfo, setSpeciesInfo] = useState()
-    const [encounterInfo, setEncounterInfo] = useState([{version_details: [{version: {name: ''}}]}])
+    const [encounterInfo, setEncounterInfo] = useState()
     const [habitatInfo, setHabitatInfo] = useState()
     const [locationInfo, setLocationInfo] = useState()
     const [locationInfoExtended, setLocationInfoExtended] = useState()
@@ -49,10 +49,6 @@ export default function Info() {
             console.log(res.data)
             setEncounterInfo(res.data)
         })
-        //await axios.get(`https://pokeapi.co/api/v2/pokemon-habitat/${speciesInfo.habitat.name}/`).then(res =>{
-        //    console.log(res.data)
-        //    setHabitatInfo(res.data)
-        //})
         
     }
 
@@ -70,12 +66,12 @@ export default function Info() {
     //    })
     //}
 
-    const getRegionInfo = async () =>{
-        await axios.get(`${locationInfo.region.url}`).then(res =>{
-            console.log(res.data)
-            setRegionInfo(res.data)
-        })
-    }
+    //const getRegionInfo = async () =>{
+    //    await axios.get(`${locationInfo.region.url}`).then(res =>{
+    //        console.log(res.data)
+    //        setRegionInfo(res.data)
+    //    })
+    //}
 
     useEffect(() =>{
         getinfo()
@@ -84,16 +80,16 @@ export default function Info() {
     useEffect(() =>{
         getSpeciesInfo()
         getEncounterInfo()
-        getRegionInfo()
+        //getRegionInfo()
     }, [pokeInfo])
 
-    useEffect(() =>{
-        try{
-            getRegionInfo()
-        }catch(error){
-            console.log(error)
-        }
-    }, [locationInfo])
+    //useEffect(() =>{
+    //    try{
+    //        getRegionInfo()
+    //    }catch(error){
+    //        console.log(error)
+    //    }
+    //}, [locationInfo])
   return (
     <div className='page-container'>
         {pokeInfo && speciesInfo ? 
@@ -120,17 +116,11 @@ export default function Info() {
                                 return(
                                     <EncounterInfo location_area= {versions.location_area.name.replace(/-/g,' ')} versions={versions.version_details}/>
                                     //{<option>{versions.version_details[0].version.name}</option>}
-                                )
-                            })}
+                                    )
+                                })}
                         </div>
                     </div>
                     : null}
-                    {/*locationInfoExtended ? 
-                    <div>
-                        <p>{locationInfoExtended.region.name}</p>
-                        <p>{locationInfoExtended.names[2].name}</p>
-                    </div>
-                        : null*/}
                 </div>
             </div>
             <Image 
