@@ -64,7 +64,7 @@ export default function QueryPage() {
   return (
     <div className='page-container'>
         <TextInput className='input-field' placeholder='search' onChange={(e)=>setSearchPoke(e.target.value)}/>
-        <Button text='search' onClick={() => search(searchPoke)}/>
+        <Button text='search' onClick={() => search(searchPoke)} className='round-button-menu'/>
         <div className='ui-container'>
             <div className='grid'>
                 {pokeList.length > 0 ?
