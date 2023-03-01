@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom'
 
 export default function Header() {
   return (
-    <header className='header-invis'>
+    <div className='header'>
         <div className='logo-container'>
             <Link to='/'>Home</Link>
             <Link to='/query'>query</Link>
+            <input placeholder='search' className='input-field'/>
         </div>
-    </header>
+    </div>
   )
 }

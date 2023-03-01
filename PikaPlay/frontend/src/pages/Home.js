@@ -8,12 +8,11 @@ export default function Home() {
 
   return (
     <div>
-      <Header/>
-      <Image className="hero-image" backgroundImage="f" image={pic}>
+      {/*<Image className="hero-image" backgroundImage="f" image={pic}>
         <h1>Lets see if this text works the quick brown fox jumped over the lazy dog</h1>
-      </Image>
+      </Image>*/}
       <div className='page-container'>
-          <p>Home</p>
+        <Header/>
       </div>
     </div>
     )

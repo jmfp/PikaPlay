@@ -40,7 +40,6 @@ export default function QueryPage() {
     <div className='page-container'>
         <div className='ui-container'>
             <div className='grid'>
-
                 {pokeList.length > 0 ?
                     pokeList.map((mon, i) =>{
                         return(
