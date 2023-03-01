@@ -51,8 +51,8 @@ export default function QueryPage() {
         if(_offset >= 1009){
             _offset = 1008
         }
+        getPokeList()
         navigate(`/query/${_limit}/${_offset}`)
-        //getPokeList()
     }
 
     const backPage = () =>{
@@ -69,19 +69,25 @@ export default function QueryPage() {
             <div className='grid'>
                 {pokeList.length > 0 ?
                     pokeList.map((mon, i) =>{
-                        return(
-                            <Result 
-                                pokeName={mon.name[0].toUpperCase() + mon.name.substr(1)} 
-                                img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + Number(_offset))}.png`} 
-                                pokeNum={(i+1) + Number(_offset)}
-                                onClick={() => displayInfo(`${mon.name}`)}
-                            />
-                        )
+                        if(i+1 <= 809){
+
+                            return(
+                                <Result 
+                                    pokeName={mon.name[0].toUpperCase() + mon.name.substr(1)} 
+                                    img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + Number(_offset))}.png`} 
+                                    pokeNum={(i+1) + Number(_offset)}
+                                    onClick={() => displayInfo(`${mon.name}`)}
+                                />
+                            )
+                        }
                     })
                 :null}
             </div>
         </div>
-        <Button className='round-button-static' text='Next Page' onClick={nextPage}/>
+        <div className='footer-container'>
+
+            <Button className='round-button-static' text='Next Page' onClick={nextPage}/>
+        </div>
     </div>
   )
 }
