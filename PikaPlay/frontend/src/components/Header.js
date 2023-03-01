@@ -6,7 +6,7 @@ export default function Header() {
     <div className='header'>
         <div className='logo-container'>
             <Link to='/'>Home</Link>
-            <Link to='/query'>query</Link>
+            <Link to='/query/151/0'>query</Link>
             <input placeholder='search' className='input-field'/>
         </div>
     </div>

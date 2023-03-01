@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           {/*<Route path="/register" element={<Register/>}/>*/}
-          <Route path="/query" element={<QueryPage/>}/>
+          <Route path="/query/:limit/:offset" element={<QueryPage/>}/>
           <Route path="/info/:pokeName" element={<Info/>}/>
         </Routes>
       </Router>
