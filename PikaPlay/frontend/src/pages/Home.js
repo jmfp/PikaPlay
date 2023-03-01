@@ -6,13 +6,6 @@ import Header from '../components/Header'
 
 export default function Home() {
 
-
-  const testApi = async() =>{
-    await axios.get("http://localhost:5000/api/products/add-product").then(res =>{
-      console.log(res.data)
-    })
-  }
-
   return (
     <div>
       <Header/>
@@ -21,7 +14,6 @@ export default function Home() {
       </Image>
       <div className='page-container'>
           <p>Home</p>
-          <div className='round-button-static' onClick={testApi}>Click</div>
       </div>
     </div>
     )
