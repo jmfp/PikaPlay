@@ -22,7 +22,7 @@ export default function QueryPage() {
         })
     }
 
-    let limit = 600;
+    let limit = 151;
     let offset = 0;
 
     const nextPage = () =>{
@@ -44,10 +44,10 @@ export default function QueryPage() {
                     pokeList.map((mon, i) =>{
                         return(
                             <Result 
-                            pokeName={mon.name} 
-                            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + offset)}.png`} 
-                            pokeNum={(i+1) + offset}
-                            onClick={() => displayInfo(`${mon.name}`)}
+                                pokeName={mon.name[0].toUpperCase() + mon.name.substr(1)} 
+                                img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(i+1 + offset)}.png`} 
+                                pokeNum={(i+1) + offset}
+                                onClick={() => displayInfo(`${mon.name}`)}
                             />
                         )
                     })

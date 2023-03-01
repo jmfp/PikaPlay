@@ -12,6 +12,8 @@ export default function Info() {
     const [locationInfo, setLocationInfo] = useState()
     const [locationInfoExtended, setLocationInfoExtended] = useState()
     const [regionInfo, setRegionInfo] = useState()
+    const [description, setDescription] = useState()
+    const [dexEntries, setDexEntries] = useState([{flavor_text: ''}])
     const {pokeName} = useParams();
 
     //remapping the colors because the provided colors
@@ -40,6 +42,7 @@ export default function Info() {
     const getSpeciesInfo = async () =>{
         await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeInfo.id}/`).then(res =>{
             console.log(res.data)
+            setDexEntries(res.data.flavor_text_entries.filter(language => language.language.name === 'en'))
             setSpeciesInfo(res.data)
         })
     }
@@ -106,23 +109,23 @@ export default function Info() {
                     <img className='poke-image-header' src={pokeInfo.sprites.back_shiny}/>
                 </div>
                 <div className='poke-entry'>
-                    <p>{speciesInfo.flavor_text_entries[0].flavor_text}</p>
+                    <p>{dexEntries[0].flavor_text}</p>
                     {/* encounter info */}
                     {encounterInfo ? 
-                    <div className='ui-container'>
+                    <div className='ui-container' style={{marginTop: `400px`, backgroundColor: `#2b2d42`}}>
                         <p>Locations</p>
-                        <div>
-                            {encounterInfo.map(versions =>{
-                                return(
-                                    <EncounterInfo location_area= {versions.location_area.name.replace(/-/g,' ')} versions={versions.version_details}/>
-                                    //{<option>{versions.version_details[0].version.name}</option>}
-                                    )
-                                })}
-                        </div>
+                        {encounterInfo.map(versions =>{
+                            return(
+                                <EncounterInfo location_area= {versions.location_area.name.replace(/-/g,' ')[0].toUpperCase() + versions.location_area.name.replace(/-/g,' ').substr(1)} versions={versions.version_details}/>
+                                //{<option>{versions.version_details[0].version.name}</option>}
+                                )
+                            })}
                     </div>
                     : null}
                 </div>
+                
             </div>
+            
             <Image 
                 className="poke-info-container" 
                 backgroundImage="f" 
