@@ -1,4 +1,3 @@
-@import "../breakpoints/breakpoints.scss";
 .page-container{
     display: flex;
     flex-direction: column;
@@ -239,48 +238,6 @@
     color: $color-white;
     border-radius: 20px;
     padding: 20px;
-    @include media('<=phone'){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        height: 70%;
-        background-color: $color-dark;
-        border: 1px solid;
-        border-color: $color-primary;
-        color: $color-white;
-        border-radius: 20px;
-        padding: 10px;
-    }
-    @include media('>phone','<=425px'){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        height: 70%;
-        background-color: $color-dark;
-        border: 1px solid;
-        border-color: $color-primary;
-        color: $color-white;
-        border-radius: 20px;
-        padding: 20px;
-    }
-    @include media('>phone','<=1120px'){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        height: 70%;
-        background-color: $color-dark;
-        border: 1px solid;
-        border-color: $color-primary;
-        color: $color-white;
-        border-radius: 20px;
-        padding: 20px;
-    }
 }
 
 .inline-container{
