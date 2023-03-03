@@ -19,3 +19,99 @@
         overflow-x:scroll;
     }
 }
+
+@media (max-width: 500){
+    .ui-container{
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        //background-color: $color-dark;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &-horizontal{
+            flex-direction: row;
+            width: 50%;
+            height: 25%;
+            overflow-x:scroll;
+        }
+    }
+}
+
+@media (max-width: 400){
+    .ui-container{
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        //background-color: $color-dark;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &-horizontal{
+            flex-direction: row;
+            width: 50%;
+            height: 25%;
+            overflow-x:scroll;
+        }
+    }
+}
+
+@media (max-width: 300){
+    .ui-container{
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        //background-color: $color-dark;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &-horizontal{
+            flex-direction: row;
+            width: 50%;
+            height: 25%;
+            overflow-x:scroll;
+        }
+    }
+}
+
+@media (max-width: 200){
+    .ui-container{
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        //background-color: $color-dark;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &-horizontal{
+            flex-direction: row;
+            width: 50%;
+            height: 25%;
+            overflow-x:scroll;
+        }
+    }
+}

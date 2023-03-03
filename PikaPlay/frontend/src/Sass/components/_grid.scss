@@ -4,8 +4,8 @@
     //align-items: center;
     text-align: center;
     //justify-items: center;
-    grid-template-columns: repeat(3, 3fr);
-    grid-template-rows: 3;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     margin: 20px;
     gap: 20px;
     grid-auto-flow: row;
@@ -18,8 +18,8 @@
         //align-items: center;
         text-align: center;
         //justify-items: center;
-        grid-template-columns: repeat(2, 3fr);
-        grid-template-rows: 3;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1;
         margin: 20px;
         gap: 20px;
         grid-auto-flow: row;

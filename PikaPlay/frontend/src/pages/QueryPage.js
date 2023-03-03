@@ -59,6 +59,9 @@ export default function QueryPage() {
         if(offset > limit){
             offset -= limit;
         }
+        _offset -= _limit
+        getPokeList()
+        navigate(`/query/${_limit}/${_offset}`)
     }
 
   return (
@@ -85,8 +88,9 @@ export default function QueryPage() {
             </div>
         </div>
         <div className='footer-container'>
+            <Button className='round-button-menu' text='Last Page' onClick={backPage }/>
+            <Button className='round-button-menu' text='Next Page' onClick={nextPage}/>
 
-            <Button className='round-button-static' text='Next Page' onClick={nextPage}/>
         </div>
     </div>
   )
