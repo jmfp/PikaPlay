@@ -1,9 +1,9 @@
 .grid{
     display: grid;
     width: 90%;
-    align-items: center;
+    //align-items: center;
     text-align: center;
-    justify-items: center;
+    //justify-items: center;
     grid-template-columns: repeat(3, 3fr);
     grid-template-rows: 3;
     margin: 20px;
@@ -15,9 +15,9 @@
     .grid{
         display: grid;
         width: 70%;
-        align-items: center;
+        //align-items: center;
         text-align: center;
-        justify-items: center;
+        //justify-items: center;
         grid-template-columns: repeat(2, 3fr);
         grid-template-rows: 3;
         margin: 20px;
@@ -30,9 +30,9 @@
     .grid{
         display: grid;
         width: 70%;
-        align-items: center;
+        //align-items: center;
         text-align: center;
-        justify-items: center;
+        //justify-items: center;
         grid-template-columns: repeat(2, 3fr);
         grid-template-rows: 3;
         margin: 20px;
@@ -45,9 +45,9 @@
     .grid{
         display: grid;
         width: 70%;
-        align-items: center;
+        //align-items: center;
         text-align: center;
-        justify-items: center;
+        //justify-items: center;
         grid-template-columns: repeat(2, 3fr);
         grid-template-rows: 3;
         margin: 20px;
