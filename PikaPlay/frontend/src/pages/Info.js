@@ -55,27 +55,6 @@ export default function Info() {
         
     }
 
-    //const getLocationInfo = async () =>{
-    //    await axios.get(`${encounterInfo[0].location_area.url}`).then(res =>{
-    //        console.log("location info " + res.data)
-    //        setLocationInfo(res.data)
-    //    })
-    //}
-    
-    //const getLocationInfoExpanded = async () =>{
-    //    await axios.get(`${locationInfo.location.url}`).then(res =>{
-    //        console.log("location info expanded " + res.data)
-    //        setLocationInfoExtended(res.data)
-    //    })
-    //}
-
-    //const getRegionInfo = async () =>{
-    //    await axios.get(`${locationInfo.region.url}`).then(res =>{
-    //        console.log(res.data)
-    //        setRegionInfo(res.data)
-    //    })
-    //}
-
     useEffect(() =>{
         getinfo()
     }, [])
@@ -85,14 +64,6 @@ export default function Info() {
         getEncounterInfo()
         //getRegionInfo()
     }, [pokeInfo])
-
-    //useEffect(() =>{
-    //    try{
-    //        getRegionInfo()
-    //    }catch(error){
-    //        console.log(error)
-    //    }
-    //}, [locationInfo])
   return (
     <div className='page-container'>
         {pokeInfo && speciesInfo ? 
@@ -109,7 +80,7 @@ export default function Info() {
                     <img className='poke-image-header' src={pokeInfo.sprites.back_shiny}/>
                 </div>
                 <div className='poke-entry'>
-                    <p>{dexEntries[0].flavor_text}</p>
+                    <p>{dexEntries.length > 0 ? dexEntries[0].flavor_text : "Generation 9 info coming soon"}</p>
                     {/* encounter info */}
                     {encounterInfo ? 
                     <div className='ui-container' style={{marginTop: `400px`, backgroundColor: `#2b2d42`}}>
@@ -117,13 +88,11 @@ export default function Info() {
                         {encounterInfo.map(versions =>{
                             return(
                                 <EncounterInfo location_area= {versions.location_area.name.replace(/-/g,' ')[0].toUpperCase() + versions.location_area.name.replace(/-/g,' ').substr(1)} versions={versions.version_details}/>
-                                //{<option>{versions.version_details[0].version.name}</option>}
                                 )
                             })}
                     </div>
                     : null}
                 </div>
-                
             </div>
             
             <Image 

@@ -19,8 +19,8 @@ export default function QueryPage() {
             return
         }
         try {
-            await axios.get(`https://pokeapi.co/api/v2/pokemon/${val}`).then(res =>{
-                displayInfo(val)
+            await axios.get(`https://pokeapi.co/api/v2/pokemon/${val.toLowerCase()}`).then(res =>{
+                displayInfo(val.toLowerCase())
             //console.log(res.data)
             //setPokeList(res.data)
             })
@@ -47,18 +47,15 @@ export default function QueryPage() {
     let _offset = Number(offset);
 
     const nextPage = () =>{
-        _offset += Number(_limit);
-        if(_offset >= 1009){
-            _offset = 1008
+        if(offset != 857){
+
+            _offset += Number(_limit);
+            getPokeList()
+            navigate(`/query/${_limit}/${_offset}`)
         }
-        getPokeList()
-        navigate(`/query/${_limit}/${_offset}`)
     }
 
     const backPage = () =>{
-        //if(offset > limit){
-        //    offset -= limit;
-        //}
         if(offset > 0){
             _offset -= _limit
             getPokeList()
