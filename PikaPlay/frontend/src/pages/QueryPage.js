@@ -56,24 +56,27 @@ export default function QueryPage() {
     }
 
     const backPage = () =>{
-        if(offset > limit){
-            offset -= limit;
+        //if(offset > limit){
+        //    offset -= limit;
+        //}
+        if(offset > 0){
+            _offset -= _limit
+            getPokeList()
+            navigate(`/query/${_limit}/${_offset}`)
         }
-        _offset -= _limit
-        getPokeList()
-        navigate(`/query/${_limit}/${_offset}`)
     }
 
   return (
     <div className='page-container'>
-        <TextInput className='input-field' placeholder='search' onChange={(e)=>setSearchPoke(e.target.value)}/>
-        <Button text='search' onClick={() => search(searchPoke)} className='round-button-menu'/>
+        <div className='service-container-3'>
+            <TextInput className='input-field' placeholder='search' onChange={(e)=>setSearchPoke(e.target.value)}/>
+            <Button text='search' onClick={() => search(searchPoke)} className='round-button-menu'/>
+        </div>
         <div className='ui-container'>
             <div className='grid'>
                 {pokeList.length > 0 ?
                     pokeList.map((mon, i) =>{
                         if(i+1 <= 809){
-
                             return(
                                 <Result 
                                     pokeName={mon.name[0].toUpperCase() + mon.name.substr(1)} 
@@ -88,8 +91,8 @@ export default function QueryPage() {
             </div>
         </div>
         <div className='footer-container'>
-            <Button className='round-button-menu' text='Last Page' onClick={backPage }/>
-            <Button className='round-button-menu' text='Next Page' onClick={nextPage}/>
+            <Button className='round-button-menu' text='Back' onClick={backPage }/>
+            <Button className='round-button-menu' text='Next' onClick={nextPage}/>
 
         </div>
     </div>
