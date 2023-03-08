@@ -97,7 +97,7 @@ export default function EncounterInfo(props) {
         <div className="grid">
             {props.versions ? props.versions.map(versions =>{
                 return(
-                    <img className='card-image' src={versionPictures[`${versions.version.name}`]} onClick={()=>(getGame(versions.version.name))}/>
+                    <img className='poke-image' src={versionPictures[`${versions.version.name}`]} onClick={()=>(getGame(versions.version.name))}/>
                     //<img className='card-image' src={`../images/poke-${versions.version.name}.jpeg`}/>
                     //<p>{versions.version.name}</p>
                 )
