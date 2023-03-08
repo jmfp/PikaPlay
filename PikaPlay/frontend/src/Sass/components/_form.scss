@@ -10,7 +10,7 @@
 .input-field{
     display: flex;
     flex-direction: row;
-    width: 800px;
+    width: 600px;
     height: 60px;
     background-color: $color-dark;
     border: 1px solid;
@@ -26,11 +26,11 @@
     }
 }
 
-@media(max-width: 500){
+@media(max-width: 750px){
     .input-field{
         display: flex;
         flex-direction: row;
-        width: 80%;
+        width: 400px;
         height: 40px;
         background-color: $color-dark;
         border: 1px solid;
@@ -46,11 +46,11 @@
         }
     }
 }
-@media(max-width: 300){
+@media(max-width: 500px){
     .input-field{
         display: flex;
         flex-direction: row;
-        width: 80%;
+        width: 200px;
         height: 40px;
         background-color: $color-dark;
         border: 1px solid;
