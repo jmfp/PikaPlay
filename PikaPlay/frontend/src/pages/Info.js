@@ -8,11 +8,6 @@ export default function Info() {
     const [pokeInfo, setPokeInfo] = useState()
     const [speciesInfo, setSpeciesInfo] = useState()
     const [encounterInfo, setEncounterInfo] = useState()
-    const [habitatInfo, setHabitatInfo] = useState()
-    const [locationInfo, setLocationInfo] = useState()
-    const [locationInfoExtended, setLocationInfoExtended] = useState()
-    const [regionInfo, setRegionInfo] = useState()
-    const [description, setDescription] = useState()
     const [dexEntries, setDexEntries] = useState([{flavor_text: ''}])
     const {pokeName} = useParams();
 
@@ -34,14 +29,12 @@ export default function Info() {
 
     const getinfo = async () =>{
         await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`).then(res =>{
-            console.log(res.data)
             setPokeInfo(res.data)
         })
     }
 
     const getSpeciesInfo = async () =>{
         await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeInfo.id}/`).then(res =>{
-            console.log(res.data)
             setDexEntries(res.data.flavor_text_entries.filter(language => language.language.name === 'en'))
             setSpeciesInfo(res.data)
         })
@@ -49,7 +42,6 @@ export default function Info() {
 
     const getEncounterInfo = async () =>{
         await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeInfo.id}/encounters`).then(res =>{
-            console.log(res.data)
             setEncounterInfo(res.data)
         })
         

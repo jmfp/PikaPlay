@@ -21,8 +21,6 @@ export default function QueryPage() {
         try {
             await axios.get(`https://pokeapi.co/api/v2/pokemon/${val.toLowerCase()}`).then(res =>{
                 displayInfo(val.toLowerCase())
-            //console.log(res.data)
-            //setPokeList(res.data)
             })
         } catch (error) {
             console.log(error.message)
@@ -34,21 +32,18 @@ export default function QueryPage() {
         getPokeList()
     }, [])
     const getPokeList = async () =>{
-        await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${_limit}&offset=${_offset}`).then(res =>{  
-            console.log(res.data.results)
+        await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${_limit}&offset=${_offset}`).then(res =>{
             setPokeList(res.data.results)
         })
     }
 
     
     const{limit, offset} = useParams()
-    console.log(offset)
     let _limit = Number(limit);
     let _offset = Number(offset);
 
     const nextPage = () =>{
         if(offset != 857){
-
             _offset += Number(_limit);
             getPokeList()
             navigate(`/query/${_limit}/${_offset}`)

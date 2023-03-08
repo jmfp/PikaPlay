@@ -28,26 +28,6 @@ import axios from 'axios'
 
 export default function EncounterInfo(props) {
 
-    const versionColors = {
-        "red": "",
-        "blue": "",
-        "green": "",
-        "yellow": "",
-        "silver": "",
-        "gold": "",
-        "crystal": "",
-        "ruby": "",
-        "sapphire": "",
-        "emerald": "",
-        "firered": "",
-        "leafgreen": "",
-        "diamond": "",
-        "pearl": "",
-        "platinum": "",
-        "black": "",
-        "white": "",
-    }
-
     const versionPictures = {
         "red": red,
         "blue": blue,
@@ -76,15 +56,6 @@ export default function EncounterInfo(props) {
         "alpha-sapphire": alpha
     }
 
-    const replaceDash = (dashedString) =>{
-        dashedString.replace(/-/g, " ")
-    }
-
-    const capitalize = (lowerString) =>{
-        let newString = lowerString[0].toUpperCase() + lowerString.substring(1)
-        return newString
-    }
-
     const getGame = async (gameName) =>{
         await axios.get(`https://pokeapi.co/api/v2/version/${gameName}/`).then(res =>{
             console.log(res.data)
@@ -98,8 +69,6 @@ export default function EncounterInfo(props) {
             {props.versions ? props.versions.map(versions =>{
                 return(
                     <img className='cover-image' src={versionPictures[`${versions.version.name}`]} onClick={()=>(getGame(versions.version.name))}/>
-                    //<img className='card-image' src={`../images/poke-${versions.version.name}.jpeg`}/>
-                    //<p>{versions.version.name}</p>
                 )
             }): null}
         </div>
