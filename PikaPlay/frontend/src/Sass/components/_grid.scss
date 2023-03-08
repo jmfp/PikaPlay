@@ -6,7 +6,7 @@
     //justify-items: center;
     justify-content: center;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: auto auto auto;
     margin: 20px;
     gap: 20px;
     grid-auto-flow: row;
@@ -20,7 +20,7 @@
         text-align: center;
         //justify-items: center;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1;
+        grid-template-rows: auto auto auto;
         margin: 20px;
         gap: 20px;
         grid-auto-flow: row;
@@ -36,7 +36,7 @@
         //justify-items: center;
         justify-content: center;
         grid-template-columns: repeat(2, 3fr);
-        grid-template-rows: 3;
+        grid-template-rows: auto auto auto;
         margin: 20px;
         gap: 20px;
         grid-auto-flow: row;
@@ -52,7 +52,7 @@
         //justify-items: center;
         justify-content: center;
         grid-template-columns: repeat(2, 3fr);
-        grid-template-rows: 3;
+        grid-template-rows: auto auto auto;
         margin: 20px;
         gap: 20px;
         grid-auto-flow: row;
