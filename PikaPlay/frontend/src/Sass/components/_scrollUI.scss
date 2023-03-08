@@ -7,6 +7,7 @@
     height: 100%;
     //background-color: $color-dark;
     overflow-y: scroll;
+    overflow-x: hidden;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     &::-webkit-scrollbar {
@@ -30,6 +31,7 @@
         height: 100%;
         //background-color: $color-dark;
         overflow-y: scroll;
+        overflow-x: hidden;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
         &::-webkit-scrollbar {
@@ -54,6 +56,7 @@
         height: 100%;
         //background-color: $color-dark;
         overflow-y: scroll;
+        overflow-x: hidden;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
         &::-webkit-scrollbar {
@@ -78,6 +81,7 @@
         height: 100%;
         //background-color: $color-dark;
         overflow-y: scroll;
+        overflow-x: hidden;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
         &::-webkit-scrollbar {
@@ -102,6 +106,7 @@
         height: 100%;
         //background-color: $color-dark;
         overflow-y: scroll;
+        overflow-x: hidden;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
         &::-webkit-scrollbar {
