@@ -37,13 +37,16 @@ export default function QueryPage() {
         })
     }
 
-    
+    //converting pagination paramaters to numbers from strings
     const{limit, offset} = useParams()
     let _limit = Number(limit);
     let _offset = Number(offset);
 
+    //currently the offset of 906 returns the last page with
+    //useable results so it's just hard-coded in for now
+    //for that to be the last page in pagination
     const nextPage = () =>{
-        if(offset != 857){
+        if(offset != 906){
             _offset += Number(_limit);
             getPokeList()
             navigate(`/query/${_limit}/${_offset}`)
@@ -68,7 +71,7 @@ export default function QueryPage() {
             <div className='grid'>
                 {pokeList.length > 0 ?
                     pokeList.map((mon, i) =>{
-                        if(i+1 <= 809){
+                        if(i+1 <= 1010){
                             return(
                                 <Result 
                                     pokeName={mon.name[0].toUpperCase() + mon.name.substr(1)} 
